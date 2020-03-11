@@ -7,9 +7,6 @@
 
 [image1]: ./test_images_output/solidWhiteRight.jpg "Lane lines"
 
----
-
-### Reflection
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
@@ -19,17 +16,3 @@ In order to draw a single line on the left and right lanes, I modified the draw_
 
 
 ![alt text][image1]
-
-
-### 2. Identify potential shortcomings with your current pipeline
-
-
-One potential shortcoming is that we adjust shape of the mask almost manually to remove edges we do not need to consider.
-
-Another shortcoming is that if a lane line is curved, then it cannot be extrapolated with a polynom of first degree.
-
-The last shortcoming is that in order to consider small parts of the lane lines (when the lines are doted) we decreased the param min_line_len, which led to identifying more edges including the horizontal ones we do not need.
-
-### 3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to using a polynom of second degree to extrapolate curved lane lines. 
