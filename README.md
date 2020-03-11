@@ -13,11 +13,7 @@
 [image6]: ./test_images_output/whiteCarLaneSwitch.jpg "Lane lines"
 
 
-### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
-
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I applied Gaussian Smoothing to the grayscaled images with kernel size equals to 9. At the next stage I used Canny transformation to detect edges, after that I did region selection in the shape of trapezoid to remove not relevant to the lane lines edges. Last step was using the Hough space transformation to identify the lane lines.  
-
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by averaging the coordinates of the line segments identified by the Hough space transformation. The line segments were classified based on positive or negative slopes. After finding the averaged begining and end points, I used np.polyfit to find the slope and intercept of the line going though these averaged points.   
+The detection pipeline consists of 5 steps. First, the images are converted to the grayscale and smothed using Gaussian Smoothing with a  kernel of size 9. At the next stage the Canny edge detection was applied. After that to remove not relevant to the lane lines edges, we masked the images with a mask of trapezoidal shape as we assume that the lines are located in the lower half of the images. At the last step, we used Hough space transform to get lane lines segments. The function draw_lines() averages the coordinates of these line segments for both left and right lines (segments were classified based on the positive or negative slopes). After finding the averaged begining and end points, np.polyfit was used to find the slope and intercept of the line going though these averaged points.   
 
 Detected lines (white)     |  Detected lines (yellow) |  Detected lines (yellow)          
 :-------------------------:|:------------------------:|:----------------------:
